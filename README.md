@@ -26,7 +26,7 @@ go get -u github.com/winterssy/instabot
 import "github.com/winterssy/instabot"
 ```
 
-## QuickStart
+## Quick Start
 
 ```go
 bot := instabot.New("YOUR_USERNAME", "YOUR_PASSWORD")
