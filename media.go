@@ -50,16 +50,16 @@ func adjustImage(img image.Image) (image.Image, error) {
 
 	if width > height {
 		if ratio > imageHorizontalLimit {
-			width = width - int(math.Ceil(float64(width)-float64(height)*2))
+			width = width - int(math.Ceil(float64(width)-float64(height)*imageHorizontalLimit))
 			img = imaging.CropCenter(img, width, height)
 		}
-		if width > 1080 {
+		if width > imageMaxWidth {
 			height = int(math.Ceil(imageMaxWidth * float64(height) / float64(width)))
 			img = imaging.Resize(img, imageMaxWidth, height, imaging.Lanczos)
 		}
 	} else if width < height {
 		if ratio < imageVerticalLimit {
-			height = height - int(math.Ceil(float64(height)-float64(width)*1.25))
+			height = height - int(math.Ceil(float64(height)-float64(width)/imageVerticalLimit))
 			img = imaging.CropCenter(img, width, height)
 		}
 		if height > imageMaxHeight {
